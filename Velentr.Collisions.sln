@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Velentr.Collisions", "Velentr.Collisions\Velentr.Collisions.csproj", "{203A49AF-C961-4CB6-B317-2D3DCE3E96A8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Velentr.Localizations.Test", "Velentr.Collisions.Test\Velentr.Localizations.Test.csproj", "{ACC293D1-6EF2-4672-B442-A30916F12622}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Velentr.Collisions.Test", "Velentr.Collisions.Test\Velentr.Collisions.Test.csproj", "{ACC293D1-6EF2-4672-B442-A30916F12622}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

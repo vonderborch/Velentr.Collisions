@@ -6,9 +6,10 @@
     <Authors>Christian Webber</Authors>
     <Company>Christian Webber</Company>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <RepositoryUrl>https://github.com/vonderborch/Velentr.Localizations</RepositoryUrl>
+    <RepositoryUrl>https://github.com/vonderborch/Velentr.Collisions</RepositoryUrl>
     <PackageTags>Localization</PackageTags>
-    <Description>A simple and easy-to-use localization helper library.</Description>
+    <Description>A simple and easy-to-use collision detection library.</Description>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
