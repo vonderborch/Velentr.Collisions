@@ -1,4 +1,5 @@
 ﻿using System;
+using Velentr.Collisions.ShapeDefinitions;
 using Velentr.Collisions.Shapes;
 
 namespace Velentr.Collisions.Conditions
@@ -20,8 +21,8 @@ namespace Velentr.Collisions.Conditions
         /// <exception cref="System.ArgumentException">Both shapes must be Circles!</exception>
         public override bool Collision(IShape left, IShape right)
         {
-            var l = (Circle.CircleDefinition)left.GetShapeDefinition();
-            var r = (Circle.CircleDefinition)right.GetShapeDefinition();
+            var l = (CircleDefinition)left.GetShapeDefinition();
+            var r = (CircleDefinition)right.GetShapeDefinition();
 
             if (l.Shape != Shape.Circle || r.Shape != Shape.Circle)
             {

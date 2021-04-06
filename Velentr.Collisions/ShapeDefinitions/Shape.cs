@@ -1,4 +1,4 @@
-﻿namespace Velentr.Collisions.Shapes
+﻿namespace Velentr.Collisions.ShapeDefinitions
 {
     public enum Shape
     {

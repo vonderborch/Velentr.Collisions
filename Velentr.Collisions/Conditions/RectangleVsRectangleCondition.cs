@@ -1,4 +1,5 @@
 ﻿using System;
+using Velentr.Collisions.ShapeDefinitions;
 using Velentr.Collisions.Shapes;
 
 namespace Velentr.Collisions.Conditions
@@ -20,8 +21,8 @@ namespace Velentr.Collisions.Conditions
         /// <exception cref="System.ArgumentException">Both shapes must be Rectangles!</exception>
         public override bool Collision(IShape left, IShape right)
         {
-            var l = (Rectangle.RectangleDefinition)left.GetShapeDefinition();
-            var r = (Rectangle.RectangleDefinition)right.GetShapeDefinition();
+            var l = (RectangleDefinition)left.GetShapeDefinition();
+            var r = (RectangleDefinition)right.GetShapeDefinition();
 
             if (l.Shape != Shape.Rectangle || r.Shape != Shape.Rectangle)
             {

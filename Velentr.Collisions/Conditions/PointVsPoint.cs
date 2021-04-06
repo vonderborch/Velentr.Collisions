@@ -1,4 +1,5 @@
 ﻿using System;
+using Velentr.Collisions.ShapeDefinitions;
 using Velentr.Collisions.Shapes;
 
 namespace Velentr.Collisions.Conditions
@@ -20,8 +21,8 @@ namespace Velentr.Collisions.Conditions
         /// <exception cref="System.ArgumentException">Both shapes must be Points!</exception>
         public override bool Collision(IShape left, IShape right)
         {
-            var l = (Point.PointDefinition)left.GetShapeDefinition();
-            var r = (Point.PointDefinition)right.GetShapeDefinition();
+            var l = (PointDefinition)left.GetShapeDefinition();
+            var r = (PointDefinition)right.GetShapeDefinition();
 
             if (l.Shape != Shape.Point || r.Shape != Shape.Point)
             {
