@@ -1,4 +1,5 @@
 ﻿using System;
+using Velentr.Collisions.ShapeDefinitions;
 using Velentr.Collisions.Shapes;
 
 namespace Velentr.Collisions.Conditions
@@ -42,11 +43,11 @@ namespace Velentr.Collisions.Conditions
                 return true;
             }
 
-            Rectangle.RectangleDefinition rec1;
-            Rectangle.RectangleDefinition rec2;
+            RectangleDefinition rec1;
+            RectangleDefinition rec2;
             if (l.Shape == Shape.Rectangle)
             {
-                rec1 = new Rectangle.RectangleDefinition()
+                rec1 = new RectangleDefinition()
                 {
                     X = r.X,
                     Y = r.Y,
@@ -54,11 +55,11 @@ namespace Velentr.Collisions.Conditions
                     Width = 0,
                     Shape = Shape.Rectangle,
                 };
-                rec2 = (Rectangle.RectangleDefinition)l;
+                rec2 = (RectangleDefinition)l;
             }
             else
             {
-                rec1 = new Rectangle.RectangleDefinition()
+                rec1 = new RectangleDefinition()
                 {
                     X = l.X,
                     Y = l.Y,
@@ -66,7 +67,7 @@ namespace Velentr.Collisions.Conditions
                     Width = 0,
                     Shape = Shape.Rectangle,
                 };
-                rec2 = (Rectangle.RectangleDefinition)r;
+                rec2 = (RectangleDefinition)r;
             }
 
             return rec1.Right >= rec2.Left && rec1.Left <= rec2.Right && rec1.Bottom >= rec2.Top && rec1.Top <= rec2.Bottom;

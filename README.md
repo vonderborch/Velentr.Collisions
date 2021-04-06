@@ -3,7 +3,10 @@ A simple collision detection library, not intended as a full physics engine repl
 
 
 # Installation
-A nuget package is available: [Velentr.Collisions](https://www.nuget.org/packages/Velentr.Collisions/)
+Nuget packages are available:
+- Generic: [Velentr.Collisions](https://www.nuget.org/packages/Velentr.Collisions/)
+- MonoGame (contains some helper methods to convert Rectangles, etc.): [Velentr.Collisions.MonoGame](https://www.nuget.org/packages/Velentr.Collisions.MonoGame/)
+- FNA (contains some helper methods to convert Rectangles, etc.): [Velentr.Collisions.FNA](https://www.nuget.org/packages/Velentr.Collisions.FNA/)
 
 # Basic Usage
 ```
@@ -51,7 +54,6 @@ else
 
 
 # Notes
-- This library uses it's own internal Rectangle, Circle, and Point structs to define shapes (more may come in the future). There is no built-in support for converting to/from XNA-derived framework's Rectangle, Vector2, or Point structs, but it should be fairly simple to convert (the properties are basically the same)
 - Currently the library uses doubles internally rather than floats as in most XNA-derived frameworks for similar structs
 
 # Future Plans

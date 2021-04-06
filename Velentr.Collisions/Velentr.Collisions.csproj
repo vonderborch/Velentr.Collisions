@@ -7,9 +7,18 @@
     <Company>Christian Webber</Company>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryUrl>https://github.com/vonderborch/Velentr.Collisions</RepositoryUrl>
-    <PackageTags>Localization</PackageTags>
+    <PackageTags>Collision Detection</PackageTags>
     <Description>A simple and easy-to-use collision detection library.</Description>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
+    <PackageProjectUrl>https://github.com/vonderborch/Velentr.Collisions</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;CORE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;CORE</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>

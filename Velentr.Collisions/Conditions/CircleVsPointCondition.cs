@@ -1,4 +1,5 @@
 ﻿using System;
+using Velentr.Collisions.ShapeDefinitions;
 using Velentr.Collisions.Shapes;
 
 namespace Velentr.Collisions.Conditions
@@ -42,17 +43,17 @@ namespace Velentr.Collisions.Conditions
                 return true;
             }
 
-            Circle.CircleDefinition c;
-            Point.PointDefinition p;
+            CircleDefinition c;
+            PointDefinition p;
             if (l.Shape == Shape.Point)
             {
-                c = (Circle.CircleDefinition) r;
-                p = (Point.PointDefinition) l;
+                c = (CircleDefinition) r;
+                p = (PointDefinition) l;
             }
             else
             {
-                c = (Circle.CircleDefinition)l;
-                p = (Point.PointDefinition)r;
+                c = (CircleDefinition)l;
+                p = (PointDefinition)r;
             }
 
             return Helpers.Math.SquaredDfifference(c.X, c.Y, p.X, p.Y) <= (c.Radius * c.Radius);
