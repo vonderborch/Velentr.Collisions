@@ -5,9 +5,10 @@ using Velentr.Collisions.Shapes;
 namespace Velentr.Collisions.Conditions
 {
     /// <summary>
-    /// 
+    ///     A rectangle vs rectangle condition.
     /// </summary>
-    /// <seealso cref="Velentr.Collisions.Conditions.CollisionCondition" />
+    ///
+    /// <seealso cref="CollisionCondition"/>
     public class RectangleVsRectangleCondition : CollisionCondition
     {
         /// <summary>

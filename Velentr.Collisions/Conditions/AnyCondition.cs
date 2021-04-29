@@ -4,9 +4,10 @@ using Velentr.Collisions.Shapes;
 namespace Velentr.Collisions.Conditions
 {
     /// <summary>
-    /// A condition 
+    ///     any condition.
     /// </summary>
-    /// <seealso cref="Velentr.Collisions.Conditions.CollisionCondition" />
+    ///
+    /// <seealso cref="CollisionCondition"/>
     public class AnyCondition : CollisionCondition
     {
 

@@ -1,15 +1,21 @@
-﻿using System;
+﻿using Velentr.Collisions.Helpers;
 using Velentr.Collisions.ShapeDefinitions;
 using Velentr.Collisions.Shapes;
 
 namespace Velentr.Collisions.Conditions
 {
     /// <summary>
-    /// 
+    ///     A rectangle vs point condition.
     /// </summary>
-    /// <seealso cref="Velentr.Collisions.Conditions.CollisionCondition" />
+    ///
+    /// <seealso cref="CollisionCondition"/>
     public class RectangleVsPointCondition : CollisionCondition
     {
+        /// <summary>
+        ///     The valid shapes.
+        /// </summary>
+        private static readonly Shape[] ValidShapes = new Shape[] { Shape.Rectangle, Shape.Point };
+
         /// <summary>
         /// Evaluates whether two shapes are colliding.
         /// </summary>
@@ -25,52 +31,23 @@ namespace Velentr.Collisions.Conditions
         /// </exception>
         public override bool Collision(IShape left, IShape right)
         {
-            var l = left.GetShapeDefinition();
-            var r = right.GetShapeDefinition();
+            var shapes = ShapeHelpers.GetShapeDefinitions<RectangleDefinition, PointDefinition>(left, right, ValidShapes);
 
-            if (l.Shape == Shape.Point && r.Shape == Shape.Point)
-            {
-                throw new ArgumentException("At least one shape must be a Rectangle!");
-            }
-
-            if (l.Shape == Shape.Rectangle && r.Shape == Shape.Rectangle)
-            {
-                throw new ArgumentException("At least one shape must be a Point!");
-            }
-
-            if (Helpers.Math.ApproximatelyEqual(l.X, r.X) && Helpers.Math.ApproximatelyEqual(l.Y, r.Y))
+            if (Helpers.Math.ApproximatelyEqual(shapes.Item1.X, shapes.Item2.X) && Helpers.Math.ApproximatelyEqual(shapes.Item1.Y, shapes.Item2.Y))
             {
                 return true;
             }
 
-            RectangleDefinition rec1;
-            RectangleDefinition rec2;
-            if (l.Shape == Shape.Rectangle)
+            var rec = new RectangleDefinition()
             {
-                rec1 = new RectangleDefinition()
-                {
-                    X = r.X,
-                    Y = r.Y,
-                    Height = 0,
-                    Width = 0,
-                    Shape = Shape.Rectangle,
-                };
-                rec2 = (RectangleDefinition)l;
-            }
-            else
-            {
-                rec1 = new RectangleDefinition()
-                {
-                    X = l.X,
-                    Y = l.Y,
-                    Height = 0,
-                    Width = 0,
-                    Shape = Shape.Rectangle,
-                };
-                rec2 = (RectangleDefinition)r;
-            }
+                X = shapes.Item2.X,
+                Y = shapes.Item2.Y,
+                Height = 0,
+                Width = 0,
+                Shape = Shape.Rectangle,
+            };
 
-            return rec1.Right >= rec2.Left && rec1.Left <= rec2.Right && rec1.Bottom >= rec2.Top && rec1.Top <= rec2.Bottom;
+            return shapes.Item1.Right >= rec.Left && shapes.Item1.Left <= rec.Right && shapes.Item1.Bottom >= rec.Top && shapes.Item1.Top <= rec.Bottom;
         }
 
     }

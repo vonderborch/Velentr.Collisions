@@ -1,15 +1,22 @@
 ﻿using System;
+using Velentr.Collisions.Helpers;
 using Velentr.Collisions.ShapeDefinitions;
 using Velentr.Collisions.Shapes;
 
 namespace Velentr.Collisions.Conditions
 {
     /// <summary>
-    /// 
+    ///     A circle vs point condition.
     /// </summary>
-    /// <seealso cref="Velentr.Collisions.Conditions.CollisionCondition" />
+    ///
+    /// <seealso cref="CollisionCondition"/>
     public class CircleVsPointCondition : CollisionCondition
     {
+        /// <summary>
+        ///     The valid shapes.
+        /// </summary>
+        private static readonly Shape[] ValidShapes = new Shape[] { Shape.Circle, Shape.Point };
+
         /// <summary>
         /// Evaluates whether two shapes are colliding.
         /// </summary>
@@ -25,38 +32,9 @@ namespace Velentr.Collisions.Conditions
         /// </exception>
         public override bool Collision(IShape left, IShape right)
         {
-            var l = left.GetShapeDefinition();
-            var r = right.GetShapeDefinition();
+            var shapes = ShapeHelpers.GetShapeDefinitions<CircleDefinition, PointDefinition>(left, right, ValidShapes);
 
-            if (l.Shape == Shape.Point && r.Shape == Shape.Point)
-            {
-                throw new ArgumentException("At least one shape must be a Circle!");
-            }
-
-            if (l.Shape == Shape.Circle && r.Shape == Shape.Circle)
-            {
-                throw new ArgumentException("At least one shape must be a Point!");
-            }
-
-            if (Helpers.Math.ApproximatelyEqual(l.X, r.X) && Helpers.Math.ApproximatelyEqual(l.Y, r.Y))
-            {
-                return true;
-            }
-
-            CircleDefinition c;
-            PointDefinition p;
-            if (l.Shape == Shape.Point)
-            {
-                c = (CircleDefinition) r;
-                p = (PointDefinition) l;
-            }
-            else
-            {
-                c = (CircleDefinition)l;
-                p = (PointDefinition)r;
-            }
-
-            return Helpers.Math.SquaredDfifference(c.X, c.Y, p.X, p.Y) <= (c.Radius * c.Radius);
+            return Helpers.Math.SquaredDfifference(shapes.Item1.X, shapes.Item1.Y, shapes.Item2.X, shapes.Item2.Y) <= (shapes.Item1.Radius * shapes.Item1.Radius);
         }
 
     }

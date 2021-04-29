@@ -5,9 +5,10 @@ using Velentr.Collisions.Shapes;
 namespace Velentr.Collisions.Conditions
 {
     /// <summary>
-    /// 
+    ///     A circle vs circle condition.
     /// </summary>
-    /// <seealso cref="Velentr.Collisions.Conditions.CollisionCondition" />
+    ///
+    /// <seealso cref="CollisionCondition"/>
     public class CircleVsCircleCondition : CollisionCondition
     {
         /// <summary>

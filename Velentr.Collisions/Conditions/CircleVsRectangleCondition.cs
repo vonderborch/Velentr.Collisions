@@ -1,4 +1,5 @@
 ﻿using System;
+using Velentr.Collisions.Helpers;
 using Velentr.Collisions.ShapeDefinitions;
 using Velentr.Collisions.Shapes;
 using Math = Velentr.Collisions.Helpers.Math;
@@ -6,11 +7,17 @@ using Math = Velentr.Collisions.Helpers.Math;
 namespace Velentr.Collisions.Conditions
 {
     /// <summary>
-    /// 
+    ///     A circle vs rectangle condition.
     /// </summary>
-    /// <seealso cref="Velentr.Collisions.Conditions.CollisionCondition" />
+    ///
+    /// <seealso cref="CollisionCondition"/>
     public class CircleVsRectangleCondition : CollisionCondition
     {
+        /// <summary>
+        ///     The valid shapes.
+        /// </summary>
+        private static readonly Shape[] ValidShapes = new Shape[] { Shape.Circle, Shape.Rectangle };
+
         /// <summary>
         /// Evaluates whether two shapes are colliding.
         /// </summary>
@@ -26,38 +33,9 @@ namespace Velentr.Collisions.Conditions
         /// </exception>
         public override bool Collision(IShape left, IShape right)
         {
-            var l = left.GetShapeDefinition();
-            var r = right.GetShapeDefinition();
+            var shapes = ShapeHelpers.GetShapeDefinitions<CircleDefinition, RectangleDefinition>(left, right, ValidShapes);
 
-            if (l.Shape == Shape.Rectangle && r.Shape == Shape.Rectangle)
-            {
-                throw new ArgumentException("At least one shape must be a Circle!");
-            }
-
-            if (l.Shape == Shape.Circle && r.Shape == Shape.Circle)
-            {
-                throw new ArgumentException("At least one shape must be a Rectangle!");
-            }
-
-            if (Helpers.Math.ApproximatelyEqual(l.X, r.X) && Helpers.Math.ApproximatelyEqual(l.Y, r.Y))
-            {
-                return true;
-            }
-
-            CircleDefinition c;
-            RectangleDefinition rec;
-            if (l.Shape == Shape.Rectangle)
-            {
-                c = (CircleDefinition)r;
-                rec = (RectangleDefinition)l;
-            }
-            else
-            {
-                c = (CircleDefinition)l;
-                rec = (RectangleDefinition)r;
-            }
-
-            return Math.SquaredDfifference(c.X, c.Y, Math.Clamp(c.X, rec.Left, rec.Right), Math.Clamp(c.Y, rec.Top, rec.Bottom)) <= c.Radius;
+            return Math.SquaredDfifference(shapes.Item1.X, shapes.Item1.Y, Math.Clamp(shapes.Item1.X, shapes.Item2.Left, shapes.Item2.Right), Math.Clamp(shapes.Item1.Y, shapes.Item2.Top, shapes.Item2.Bottom)) <= shapes.Item1.Radius;
         }
 
     }
